@@ -15,8 +15,7 @@
                         <h1 class="h3 mb-0">Create New Teacher</h1>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('teachers.store') }}" method="POST">
-                            @csrf
+                        <form action="{{ route('teachers.store') }}" method="GET">
                             <div class="mb-3">
                                 <label for="full_name" class="form-label">Full Name</label>
                                 <input type="text" class="form-control" id="full_name" name="full_name" required>
@@ -36,7 +35,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="tel" class="form-label">Telephone</label>
-                                <input type="tel" class="form-control" id="tel" name="tel" pattern="[0-9]+" required>
+                                <input type="tel" class="form-control" id="tel" name="tel" pattern="[0-9\s]+" required>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <a href="{{ route('teachers.index') }}" class="btn btn-secondary">Cancel</a>

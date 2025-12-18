@@ -9,7 +9,6 @@
         .pagination {
             justify-content: center;
         }
-
         .pagination svg {
             width: 16px;
             height: 16px;
@@ -58,8 +57,8 @@
                                         <td>{{ $teacher->degree }}</td>
                                         <td>{{ $teacher->tel }}</td>
                                         <td>
-                                            <a href="{{ route('teachers.show', $teacher->tid) }}"class="btn btn-sm btn-primary"> View </a>
-                                            <a href="{{ route('teachers.edit', $teacher->tid) }}"class="btn btn-sm btn-secondary"> Edit </a>
+                                            <a href="{{ route('teachers.show', $teacher->tid) }}?{{ request()->getQueryString() }}"class="btn btn-sm btn-primary"> View </a>
+                                            <a href="{{ route('teachers.edit', $teacher->tid) }}?{{ request()->getQueryString() }}"class="btn btn-sm btn-secondary"> Edit </a>
                                             <form action="{{ route('teachers.destroy', $teacher->tid) }}"method="POST"class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -84,6 +83,5 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

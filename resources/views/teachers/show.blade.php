@@ -45,8 +45,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="{{ route('teachers.index') }}" class="btn btn-secondary">Back to List</a>
-                        <a href="{{ route('teachers.edit', $teacher->tid) }}" class="btn btn-secondary ms-2">Edit</a>
+                        <a href="{{ route('teachers.index') }}?{{ request()->getQueryString() }}" class="btn btn-secondary">Back to List</a>
+                        <a href="{{ route('teachers.edit', $teacher->tid) }}?{{ request()->getQueryString() }}" class="btn btn-secondary ms-2">Edit</a>
                     </div>
                 </div>
             </div>

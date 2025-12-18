@@ -18,6 +18,7 @@
                         <form action="{{ route('teachers.update', $teacher->tid) }}" method="POST">
                             @csrf
                             @method('PUT')
+                            <input type="hidden" name="page" value="{{ request('page', 1) }}">
                             <div class="mb-3">
                                 <label for="tid" class="form-label">TID</label>
                                 <input type="text" class="form-control" id="tid" name="tid" value="{{ $teacher->tid }}" readonly>
@@ -40,7 +41,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="tel" class="form-label">Telephone</label>
-                                <input type="tel" class="form-control" id="tel" name="tel" pattern="[0-9]+" value="{{ $teacher->tel }}" required>
+                                <input type="tel" class="form-control" id="tel" name="tel" pattern="[0-9\s]+" value="{{ $teacher->tel }}" required>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <a href="{{ route('teachers.index') }}" class="btn btn-secondary">Cancel</a>

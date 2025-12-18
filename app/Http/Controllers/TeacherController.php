@@ -10,7 +10,7 @@ class TeacherController extends Controller
 
     public function index()
     {
-        $teachers = Teacher::paginate(10);
+        $teachers = Teacher::orderBy('tid')->paginate(10);
         return view('teachers.index', compact('teachers'));
     }
 
@@ -25,7 +25,7 @@ class TeacherController extends Controller
             'full_name' => 'required',
             'gender' => 'required|in:male,female,other',
             'degree' => 'required|max:50',
-            'tel' => 'required|regex:/^[0-9]+$/',
+            'tel' => 'required|regex:/^[0-9\s]+$/',
         ]);
 
         Teacher::create($request->all());
@@ -52,12 +52,14 @@ class TeacherController extends Controller
             'full_name' => 'required',
             'gender' => 'required|in:male,female,other',
             'degree' => 'required|max:50',
-            'tel' => 'required|regex:/^[0-9]+$/',
+            'tel' => 'required|regex:/^[0-9\s]+$/',
         ]);
 
         $teacher = Teacher::findOrFail($id);
-        $teacher->update($request->all());
-        return redirect()->route('teachers.index');
+        $teacher->update($request->only(['full_name', 'gender', 'degree', 'tel']));
+        
+        $page = $request->get('page', 1);
+        return redirect()->route('teachers.index', ['page' => $page]);
     }
 
     public function destroy(string $id)

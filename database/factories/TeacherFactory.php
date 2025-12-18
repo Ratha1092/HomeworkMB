@@ -3,10 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Teacher>
- */
 class TeacherFactory extends Factory
 {
     /**
@@ -20,7 +16,7 @@ class TeacherFactory extends Factory
             'full_name' => $this->faker->name(),
             'gender' => $this->faker->randomElement(['male', 'female', 'other']),
             'degree' => $this->faker->randomElement(['Bachelor', 'Master', 'PhD']),
-            'tel' => $this->faker->phoneNumber(),
+            'tel' => '0 ' . $this->faker->numberBetween(100, 999) . ' ' . $this->faker->numberBetween(100, 999) . ' ' . $this->faker->numberBetween(100, 999),
         ];
     }
 }
